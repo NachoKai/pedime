@@ -1,15 +1,44 @@
 {
-  "name": "pedime",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "next": "10.1.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
-  }
+	"name": "pedime",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"prettier": "prettier --write '**/*.jsx' && prettier --write '**/*.js' && prettier --write '**/*.json'"
+	},
+	"dependencies": {
+		"@chakra-ui/icons": "^1.0.8",
+		"@chakra-ui/react": "^1.4.2",
+		"@emotion/react": "^11",
+		"@emotion/styled": "^11",
+		"axios": "^0.21.1",
+		"framer-motion": "^4",
+		"next": "10.1.2",
+		"papaparse": "^5.3.0",
+		"react": "17.0.2",
+		"react-dom": "17.0.2"
+	},
+	"devDependencies": {
+		"prettier": "^2.2.1"
+	},
+	"prettier": {
+		"printWidth": 90,
+		"tabWidth": 2,
+		"useTabs": true,
+		"semi": true,
+		"arrowParens": "avoid",
+		"bracketSpacing": true,
+		"jsxBracketSameLine": false,
+		"singleQuote": false,
+		"trailingComma": "es5",
+		"endOfLine": "lf",
+		"htmlWhitespaceSensitivity": "css",
+		"jsxSingleQuote": false,
+		"quoteProps": "as-needed",
+		"requirePragma": false,
+		"insertPragma": false,
+		"proseWrap": "preserve"
+	}
 }
