@@ -92,7 +92,12 @@ const ProductsGrid = ({ products, addToCart }) => {
 							{parseCurrency(product.price)}
 						</Text>
 
-						<Button size="sm" onClick={() => addToCart(product)} colorScheme="primary">
+						<Button
+							size="sm"
+							onClick={() => addToCart(product)}
+							colorScheme="primary"
+							variant="outline"
+						>
 							Add
 						</Button>
 					</Box>
