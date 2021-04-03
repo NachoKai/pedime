@@ -5,7 +5,7 @@ const Header = () => {
 		<VStack marginBottom={8} marginTop={4}>
 			<Image borderRadius={9999} src="https://picsum.photos/128"></Image>
 			<Heading>Pedi.me</Heading>
-			<Text>Test Tienda</Text>
+			<Text>Test Store</Text>
 		</VStack>
 	);
 };
