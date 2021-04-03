@@ -9,12 +9,14 @@ import {
 	Input,
 	InputGroup,
 	InputLeftElement,
+	Select,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import { parseCurrency } from "../utils/parseCurrency";
 
 const ProductsGrid = ({ products, addToCart }) => {
 	const [searchField, setSearchFields] = useState("");
+	const [categories, setCategories] = useState([]);
 
 	const onSearchChange = event => {
 		setSearchFields(event.target.value);
@@ -37,6 +39,11 @@ const ProductsGrid = ({ products, addToCart }) => {
 					placeholder="Search product..."
 					onChange={onSearchChange}
 				/>
+				<Select placeholder="Category" maxW="200px" marginLeft={4}>
+					<option value="option1">Option 1</option>
+					<option value="option2">Option 2</option>
+					<option value="option3">Option 3</option>
+				</Select>
 			</InputGroup>
 
 			<SimpleGrid columns={[1, 2, 3, 4]} spacing={10}>
