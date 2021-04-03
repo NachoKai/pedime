@@ -25,8 +25,7 @@ const CartList = ({ cart, setCart }) => {
 		const valueId = cart.findIndex(
 			({ id, title }) => id === product.id && title === product.title
 		);
-
-		const newArray = cart.filter((_, i) => i !== valueId);
+		const newArray = [...cart.slice(0, valueId), ...cart.slice(valueId + 1)];
 		return setCart([...newArray]);
 	};
 
