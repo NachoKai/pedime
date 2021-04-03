@@ -6,7 +6,7 @@ export default extendTheme({
 	},
 	styles: {
 		body: {
-			backgroundColor: "primary.50",
+			// backgroundColor: "primary.50",
 		},
 	},
 });

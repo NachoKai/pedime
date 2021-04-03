@@ -13,7 +13,7 @@ import {
 	Box,
 	Link,
 } from "@chakra-ui/react";
-import { DeleteIcon } from "@chakra-ui/icons";
+import { DeleteIcon, PhoneIcon } from "@chakra-ui/icons";
 import { parseCurrency } from "../utils/parseCurrency";
 
 const CartList = ({ cart, setCart }) => {
@@ -54,7 +54,7 @@ const CartList = ({ cart, setCart }) => {
 				<DrawerOverlay>
 					<DrawerContent>
 						<DrawerCloseButton />
-						<DrawerHeader>Order List</DrawerHeader>
+						<DrawerHeader>Cart List</DrawerHeader>
 
 						<DrawerBody d="flex" flexDirection="column" justifyContent="space-between">
 							<Box>
@@ -93,6 +93,7 @@ const CartList = ({ cart, setCart }) => {
 										isExternal
 										as={Link}
 										colorScheme="primary"
+										leftIcon={<PhoneIcon />}
 									>
 										Send Order
 									</Button>
