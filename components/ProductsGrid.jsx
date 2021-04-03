@@ -115,6 +115,7 @@ const ProductsGrid = ({ products, setCart }) => {
 									boxShadow="md"
 								>
 									<Image
+										loading="lazy"
 										borderRadius="lg"
 										src={product.image}
 										alt={product.image}
