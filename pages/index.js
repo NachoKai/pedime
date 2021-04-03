@@ -1,15 +1,12 @@
-import { useState, useMemo } from "react";
-import { Box, Button, Link, Divider } from "@chakra-ui/react";
+import { useState } from "react";
 import Head from "next/head";
 import api from "../api";
 import CartList from "../components/CartList";
 import Header from "../components/Header";
 import ProductsGrid from "../components/ProductsGrid";
-import { parseCurrency } from "../utils/parseCurrency";
 
 const Home = ({ products }) => {
 	const [cart, setCart] = useState([]);
-	const addToCart = product => setCart(cart => cart.concat(product));
 
 	return (
 		<>
@@ -19,8 +16,7 @@ const Home = ({ products }) => {
 			</Head>
 
 			<Header />
-			<Divider colorScheme="primary" />
-			<ProductsGrid products={products} addToCart={addToCart} />
+			<ProductsGrid products={products} setCart={setCart} />
 			<CartList cart={cart} setCart={setCart} />
 		</>
 	);

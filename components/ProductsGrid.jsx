@@ -16,9 +16,11 @@ import {
 import { SearchIcon } from "@chakra-ui/icons";
 import { parseCurrency } from "../utils/parseCurrency";
 
-const ProductsGrid = ({ products, addToCart }) => {
+const ProductsGrid = ({ products, setCart }) => {
 	const [searchField, setSearchFields] = useState("");
 	const [categories, setCategories] = useState([]);
+
+	const addToCart = product => setCart(cart => cart.concat(product));
 
 	const onSearchChange = event => {
 		setSearchFields(event.target.value);
@@ -78,20 +80,24 @@ const ProductsGrid = ({ products, addToCart }) => {
 
 			{categories.map(category => (
 				<Box key={Math.random()} id={category.replace(/\s/g, "").toLowerCase()}>
-					<Box d="flex" marginTop={8} marginBottom={4} p={1} alignItems="flex-end">
-						<Heading
-							as="h4"
-							size="md"
-							value={category}
-							onClick={() => console.log("hi")}
-							marginRight={2}
-						>
-							{category}
-						</Heading>
-						<Heading size="md" as="h4" color="gray.500" fontWeight="400">
-							({filteredProducts.filter(product => product.category === category).length})
-						</Heading>
-					</Box>
+					{!!filteredProducts.filter(product => product.category === category).length && (
+						<Box d="flex" marginTop={8} marginBottom={4} p={1} alignItems="flex-end">
+							<Heading
+								as="h4"
+								size="md"
+								value={category}
+								onClick={() => console.log("hi")}
+								marginRight={2}
+							>
+								{category}
+							</Heading>
+							<Heading size="md" as="h4" color="gray.500" fontWeight="400">
+								(
+								{filteredProducts.filter(product => product.category === category).length}
+								)
+							</Heading>
+						</Box>
+					)}
 
 					<SimpleGrid columns={[1, 2, 3, 4]} spacing={10}>
 						{filteredProducts
