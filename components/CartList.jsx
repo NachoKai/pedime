@@ -123,7 +123,7 @@ const CartList = ({ cart, setCart }) => {
 							<Box marginLeft={4}>
 								{!!cart.length && (
 									<Button
-										href={`https://wa.me/5491130169256?text=${encodeURIComponent(
+										href={`https://wa.me/5491100000000?text=${encodeURIComponent(
 											orderText
 										)}`}
 										isExternal
