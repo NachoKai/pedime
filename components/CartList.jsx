@@ -43,7 +43,7 @@ const CartList = ({ cart, setCart }) => {
 		<>
 			<Box d="flex" justifyContent="center" marginTop={8} position="sticky" bottom={4}>
 				{!!cart.length && (
-					<Button ref={btnRef} colorScheme="whatsapp" onClick={onOpen} p={8}>
+					<Button ref={btnRef} colorScheme="primary" onClick={onOpen} p={8}>
 						Show Cart: {cart.length} products (
 						{parseCurrency(cart.reduce((total, product) => total + product.price, 0))})
 					</Button>
@@ -92,7 +92,7 @@ const CartList = ({ cart, setCart }) => {
 										)}`}
 										isExternal
 										as={Link}
-										colorScheme="whatsapp"
+										colorScheme="primary"
 									>
 										Send Order
 									</Button>
