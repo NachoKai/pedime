@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
 	SimpleGrid,
 	Box,
@@ -26,6 +26,15 @@ const ProductsGrid = ({ products, addToCart }) => {
 		product.title.toLowerCase().includes(searchField.toLowerCase())
 	);
 
+	useEffect(() => {
+		const categoryList = [...new Set(products.map(product => product.category))];
+		setCategories(categoryList);
+	}, []);
+
+	const selectCategory = category => {
+		return console.log("category");
+	};
+
 	return (
 		<>
 			<InputGroup marginBottom={8}>
@@ -40,9 +49,11 @@ const ProductsGrid = ({ products, addToCart }) => {
 					onChange={onSearchChange}
 				/>
 				<Select placeholder="Category" maxW="200px" marginLeft={4}>
-					<option value="option1">Option 1</option>
-					<option value="option2">Option 2</option>
-					<option value="option3">Option 3</option>
+					{categories.map(category => (
+						<option key={category} value={category}>
+							{category}
+						</option>
+					))}
 				</Select>
 			</InputGroup>
 
