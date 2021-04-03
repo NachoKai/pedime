@@ -13,22 +13,35 @@ import {
 	Box,
 	Link,
 } from "@chakra-ui/react";
-import { DeleteIcon, PhoneIcon } from "@chakra-ui/icons";
+import { MinusIcon, AddIcon, PhoneIcon } from "@chakra-ui/icons";
 import { parseCurrency } from "../utils/parseCurrency";
 
 const CartList = ({ cart, setCart }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const btnRef = useRef();
+	const uniqueProducts = [...new Set(cart)];
 
-	const removeFromCart = (cart, product) =>
-		setCart(cart.filter(cartProduct => cartProduct.id !== product.id));
+	const removeProduct = (cart, product) => {
+		// Implement remove
+		return setCart([...cart, product]);
+	};
+
+	const addProduct = (cart, product) => {
+		return setCart([...cart, product]);
+	};
 
 	const orderText = useMemo(
 		() =>
-			cart
+			uniqueProducts
 				.reduce(
 					(message, product) =>
-						message.concat(`* ${product.title} - ${parseCurrency(product.price)}\n`),
+						message.concat(
+							`${product.title} x ${
+								cart.filter(p => p.id === product.id).length
+							}:   ${parseCurrency(
+								product.price * cart.filter(p => p.id === product.id).length
+							)}\n`
+						),
 					``
 				)
 				.concat(
@@ -36,12 +49,12 @@ const CartList = ({ cart, setCart }) => {
 						cart.reduce((total, product) => total + product.price, 0)
 					)}`
 				),
-		[cart]
+		[uniqueProducts, cart]
 	);
 
 	return (
 		<>
-			<Box d="flex" justifyContent="center" marginTop={8} position="sticky" bottom={4}>
+			<Box margin="auto" marginTop={8} position="sticky" bottom={4} w="fit-content">
 				{!!cart.length && (
 					<Button ref={btnRef} colorScheme="primary" onClick={onOpen} p={8}>
 						Show Cart: {cart.length} {cart.length !== 1 ? "products" : "product"} (
@@ -58,24 +71,47 @@ const CartList = ({ cart, setCart }) => {
 
 						<DrawerBody d="flex" flexDirection="column" justifyContent="space-between">
 							<Box>
-								{cart.map(product => (
+								{uniqueProducts.map(product => (
 									<Box
-										key={product.id}
+										key={`${Math.random()}-${product.id}`}
 										d="flex"
 										justifyContent="space-between"
 										alignItems="center"
 									>
-										<Text marginY={4}>{`* ${product.title} - ${parseCurrency(
-											product.price
-										)}\n`}</Text>
-										<DeleteIcon
-											cursor="pointer"
-											onClick={() => removeFromCart(cart, product)}
-										/>
+										<Text marginY={4}>
+											&bull;
+											{`${product.title} x ${
+												cart.filter(p => p.id === product.id).length
+											}:   ${parseCurrency(
+												product.price * cart.filter(p => p.id === product.id).length
+											)}\n`}
+										</Text>
+										<Box>
+											<MinusIcon
+												cursor="pointer"
+												onClick={() => removeProduct(cart, product)}
+												border="2px solid white"
+												borderRadius={25}
+												w="23px"
+												h="23px"
+												p={1}
+											/>
+											<AddIcon
+												cursor="pointer"
+												onClick={() => addProduct(cart, product)}
+												marginLeft={4}
+												border="2px solid white"
+												borderRadius={25}
+												w="23px"
+												h="23px"
+												p={1}
+											/>
+										</Box>
 									</Box>
 								))}
 							</Box>
-							<Text>{`Total: ${parseCurrency(
+
+							<Text fontWeight={700} fontSize={17}>{`Total: ${parseCurrency(
 								cart.reduce((total, product) => total + product.price, 0)
 							)}`}</Text>
 						</DrawerBody>
@@ -87,7 +123,7 @@ const CartList = ({ cart, setCart }) => {
 							<Box marginLeft={4}>
 								{!!cart.length && (
 									<Button
-										href={`https://wa.me/5491100000000?text=${encodeURIComponent(
+										href={`https://wa.me/5491130169256?text=${encodeURIComponent(
 											orderText
 										)}`}
 										isExternal
