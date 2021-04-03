@@ -22,7 +22,8 @@ const CartList = ({ cart, setCart }) => {
 	const uniqueProducts = [...new Set(cart)];
 
 	const removeProduct = (cart, product) => {
-		// Implement remove
+		// Implement remove product
+
 		return setCart([...cart]);
 	};
 

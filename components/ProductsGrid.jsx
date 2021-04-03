@@ -108,43 +108,48 @@ const ProductsGrid = ({ products, setCart }) => {
 									d="flex"
 									flexDirection="column"
 									justifyContent="center"
+									alignItems="space-between"
 									borderRadius="lg"
 									p={5}
 									bg="white"
 									color="black"
 									boxShadow="md"
 								>
-									<Image
-										loading="lazy"
-										borderRadius="lg"
-										src={product.image}
-										alt={product.image}
-										marginBottom={4}
-									/>
-									<Text fontSize="2xl">{product.title}</Text>
-									<Badge
-										maxWidth="fit-content"
-										colorScheme="primary"
-										variant="subtle"
-										marginBottom={2}
-									>
-										{product.category}
-									</Badge>
-									<Text fontSize="sm" noOfLines={3} marginBottom={4}>
-										{product.description}
-									</Text>
-									<Text fontWeight="bold" fontSize="md" marginBottom={4}>
-										{parseCurrency(product.price)}
-									</Text>
+									<Box d="flex" flexDirection="column" height="100%">
+										<Image
+											loading="lazy"
+											borderRadius="lg"
+											src={product.image}
+											alt={product.image}
+											marginBottom={4}
+										/>
+										<Text fontSize="2xl">{product.title}</Text>
+										<Badge
+											maxWidth="fit-content"
+											colorScheme="primary"
+											variant="subtle"
+											marginBottom={2}
+										>
+											{product.category}
+										</Badge>
+										<Text fontSize="sm" noOfLines={3} marginBottom={4}>
+											{product.description}
+										</Text>
+									</Box>
 
-									<Button
-										size="sm"
-										onClick={() => addToCart(product)}
-										colorScheme="primary"
-										variant="outline"
-									>
-										Add
-									</Button>
+									<Box d="flex" flexDirection="column">
+										<Text fontWeight="bold" fontSize="md" marginBottom={4}>
+											{parseCurrency(product.price)}
+										</Text>
+										<Button
+											size="sm"
+											onClick={() => addToCart(product)}
+											colorScheme="primary"
+											variant="outline"
+										>
+											Add
+										</Button>
+									</Box>
 								</Box>
 							))}
 					</SimpleGrid>
