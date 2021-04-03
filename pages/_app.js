@@ -8,11 +8,12 @@ const App = ({ Component, pageProps }) => {
 		<ChakraProvider theme={theme}>
 			<Box p={4}>
 				<Container
-					backgroundColor="primary"
 					maxWidth="container.xl"
 					p={4}
 					boxShadow="md"
 					borderRadius="xl"
+					backgroundColor="primary.50"
+					color="#222"
 				>
 					<Component {...pageProps} />
 				</Container>
