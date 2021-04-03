@@ -23,7 +23,7 @@ const CartList = ({ cart, setCart }) => {
 
 	const removeProduct = (cart, product) => {
 		// Implement remove
-		return setCart([...cart, product]);
+		return setCart([...cart]);
 	};
 
 	const addProduct = (cart, product) => {
