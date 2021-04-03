@@ -82,13 +82,7 @@ const ProductsGrid = ({ products, setCart }) => {
 				<Box key={Math.random()} id={category.replace(/\s/g, "").toLowerCase()}>
 					{!!filteredProducts.filter(product => product.category === category).length && (
 						<Box d="flex" marginTop={8} marginBottom={4} p={1} alignItems="flex-end">
-							<Heading
-								as="h4"
-								size="md"
-								value={category}
-								onClick={() => console.log("hi")}
-								marginRight={2}
-							>
+							<Heading as="h4" size="md" value={category} marginRight={2}>
 								{category}
 							</Heading>
 							<Heading size="md" as="h4" color="gray.500" fontWeight="400">

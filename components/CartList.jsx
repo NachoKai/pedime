@@ -22,8 +22,12 @@ const CartList = ({ cart, setCart }) => {
 	const uniqueProducts = [...new Set(cart)];
 
 	const removeProduct = (cart, product) => {
-		// Implement remove product
-		return setCart([...cart]);
+		const valueId = cart.findIndex(
+			({ id, title }) => id === product.id && title === product.title
+		);
+
+		const newArray = cart.filter((_, i) => i !== valueId);
+		return setCart([...newArray]);
 	};
 
 	const addProduct = (cart, product) => {
