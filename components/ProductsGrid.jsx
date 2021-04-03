@@ -50,7 +50,7 @@ const ProductsGrid = ({ products, addToCart }) => {
 				/>
 				<Select placeholder="Category" maxW="200px" marginLeft={4}>
 					{categories.map(category => (
-						<option key={category} value={category}>
+						<option key={category} value={category} onClick={() => console.log("hi")}>
 							{category}
 						</option>
 					))}
@@ -68,10 +68,21 @@ const ProductsGrid = ({ products, addToCart }) => {
 						bg="white"
 						color="black"
 						key={product.id}
+						boxShadow="md"
 					>
-						<Image src={product.image} alt={product.image} marginBottom={4} />
+						<Image
+							borderRadius="lg"
+							src={product.image}
+							alt={product.image}
+							marginBottom={4}
+						/>
 						<Text fontSize="2xl">{product.title}</Text>
-						<Badge colorScheme="primary" variant="subtle" marginBottom={2}>
+						<Badge
+							maxWidth="fit-content"
+							colorScheme="primary"
+							variant="subtle"
+							marginBottom={2}
+						>
 							{product.category}
 						</Badge>
 						<Text fontSize="sm" noOfLines={3} marginBottom={4}>
