@@ -2,10 +2,6 @@ import { useState, useEffect } from "react";
 import {
 	SimpleGrid,
 	Box,
-	Text,
-	Image,
-	Button,
-	Badge,
 	Input,
 	InputGroup,
 	InputLeftElement,
@@ -14,13 +10,11 @@ import {
 	Link,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
-import { parseCurrency } from "../utils/parseCurrency";
+import ProductCard from "./ProductCard";
 
 const ProductsGrid = ({ products, setCart }) => {
 	const [searchField, setSearchFields] = useState("");
 	const [categories, setCategories] = useState([]);
-
-	const addToCart = product => setCart(cart => cart.concat(product));
 
 	const onSearchChange = event => {
 		setSearchFields(event.target.value);
@@ -33,7 +27,7 @@ const ProductsGrid = ({ products, setCart }) => {
 	useEffect(() => {
 		const categoryList = [...new Set(products.map(product => product.category))];
 		setCategories(categoryList);
-	}, []);
+	}, [products]);
 
 	const handleSelectCategory = () => {
 		const selectBox = document.getElementById("selectBox");
@@ -91,62 +85,11 @@ const ProductsGrid = ({ products, setCart }) => {
 							</Heading>
 						</Box>
 					)}
-
 					<SimpleGrid columns={[1, 2, 3, 4]} spacing={10}>
 						{filteredProducts
 							.filter(product => product.category === category)
 							.map(product => (
-								<Box
-									key={Math.random()}
-									d="flex"
-									flexDirection="column"
-									justifyContent="center"
-									alignItems="space-between"
-									borderRadius="lg"
-									p={5}
-									bg="white"
-									color="black"
-									boxShadow="md"
-								>
-									<Box d="flex" flexDirection="column" height="100%">
-										<Image
-											w="100%"
-											h="auto"
-											alt={product.title}
-											loading="lazy"
-											borderRadius="lg"
-											src={product.image}
-											alt={product.image}
-											marginY={4}
-										/>
-										<Text fontSize="2xl">{product.title}</Text>
-										<Badge
-											maxWidth="fit-content"
-											colorScheme="primary"
-											variant="subtle"
-											marginY={1}
-										>
-											{product.category}
-										</Badge>
-										<Text fontSize="sm" noOfLines={3} marginY={2}>
-											{product.description}
-										</Text>
-									</Box>
-
-									<Box d="flex" flexDirection="column">
-										<Text fontWeight="bold" fontSize="md" marginY={4}>
-											{parseCurrency(product.price)}
-										</Text>
-										<Button
-											size="sm"
-											onClick={() => addToCart(product)}
-											colorScheme="primary"
-											variant="outline"
-										>
-											Add
-										</Button>
-									</Box>
-								</Box>
+								<ProductCard key={Math.random()} product={product} setCart={setCart} />
 							))}
 					</SimpleGrid>
 				</Box>
