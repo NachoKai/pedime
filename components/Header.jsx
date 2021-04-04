@@ -15,7 +15,9 @@ const Header = () => {
 			<Heading as={Link} href="/">
 				Pedi.me
 			</Heading>
-			<Text color="gray.500">Test Store made with Next.js, ChakraUI, Google Sheets and Whatsapp checkout</Text>
+			<Text color="gray.500">
+				Test Store made with Next.js, ChakraUI, Google Sheets and Whatsapp checkout
+			</Text>
 		</VStack>
 	);
 };
