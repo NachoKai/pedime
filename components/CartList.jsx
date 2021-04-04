@@ -68,7 +68,7 @@ const CartList = ({ cart, setCart }) => {
 				<DrawerOverlay>
 					<DrawerContent>
 						<DrawerCloseButton />
-						<DrawerHeader>Cart List</DrawerHeader>
+						<DrawerHeader>Cart List ({cart.length})</DrawerHeader>
 
 						<DrawerBody d="flex" flexDirection="column" justifyContent="space-between">
 							<Box>
