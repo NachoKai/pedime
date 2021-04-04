@@ -43,7 +43,7 @@ const ProductsGrid = ({ products, setCart }) => {
 
 	return (
 		<>
-			<InputGroup marginBottom={8}>
+			<InputGroup marginY={8}>
 				<InputLeftElement
 					pointerEvents="none"
 					children={<SearchIcon color="gray.300" />}
@@ -118,24 +118,24 @@ const ProductsGrid = ({ products, setCart }) => {
 											borderRadius="lg"
 											src={product.image}
 											alt={product.image}
-											marginBottom={4}
+											marginY={4}
 										/>
 										<Text fontSize="2xl">{product.title}</Text>
 										<Badge
 											maxWidth="fit-content"
 											colorScheme="primary"
 											variant="subtle"
-											marginBottom={2}
+											marginY={1}
 										>
 											{product.category}
 										</Badge>
-										<Text fontSize="sm" noOfLines={3} marginBottom={4}>
+										<Text fontSize="sm" noOfLines={3} marginY={2}>
 											{product.description}
 										</Text>
 									</Box>
 
 									<Box d="flex" flexDirection="column">
-										<Text fontWeight="bold" fontSize="md" marginBottom={4}>
+										<Text fontWeight="bold" fontSize="md" marginY={4}>
 											{parseCurrency(product.price)}
 										</Text>
 										<Button

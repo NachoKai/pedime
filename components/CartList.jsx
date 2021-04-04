@@ -37,9 +37,9 @@ const CartList = ({ cart, setCart }) => {
 				.reduce(
 					(message, product) =>
 						message.concat(
-							`${product.title} x ${
+							`-${product.title} x ${
 								cart.filter(p => p.id === product.id).length
-							}:   ${parseCurrency(
+							}: ${parseCurrency(
 								product.price * cart.filter(p => p.id === product.id).length
 							)}\n`
 						),
@@ -79,11 +79,11 @@ const CartList = ({ cart, setCart }) => {
 										justifyContent="space-between"
 										alignItems="center"
 									>
-										<Text marginY={4}>
-											&bull;
+										<Text marginY={4} maxWidth="185">
+											-
 											{`${product.title} x ${
 												cart.filter(p => p.id === product.id).length
-											}:   ${parseCurrency(
+											}: ${parseCurrency(
 												product.price * cart.filter(p => p.id === product.id).length
 											)}\n`}
 										</Text>
