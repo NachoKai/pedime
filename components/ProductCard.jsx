@@ -38,21 +38,25 @@ const ProductCard = ({ product, setCart }) => {
 					{product.category}
 				</Badge>
 
-				<Collapse marginY={2} startingHeight={60} in={show}>
+				{product.description.length > 130 ? (
+					<>
+						<Collapse marginY={2} startingHeight={60} in={show}>
+							<Text fontSize="sm">{product.description}</Text>
+						</Collapse>
+						<Button
+							backgroundColor="white"
+							justifyContent="flex-end"
+							fontWeight={400}
+							color="gray.500"
+							size="sm"
+							onClick={handleToggle}
+							mt="8px"
+						>
+							Show {show ? "Less" : "More"}
+						</Button>{" "}
+					</>
+				) : (
 					<Text fontSize="sm">{product.description}</Text>
-				</Collapse>
-				{product.description.length > 130 && (
-					<Button
-						backgroundColor="white"
-						justifyContent="flex-end"
-						fontWeight={400}
-						color="gray.500"
-						size="sm"
-						onClick={handleToggle}
-						mt="8px"
-					>
-						Show {show ? "Less" : "More"}
-					</Button>
 				)}
 			</Box>
 
