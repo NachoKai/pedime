@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { parseCurrency } from "../utils/parseCurrency";
 import { Box, Text, Image, Button, Badge, Collapse } from "@chakra-ui/react";
 
 const ProductCard = ({ product, setCart }) => {
 	const [show, setShow] = useState(false);
 	const addToCart = product => setCart(cart => cart.concat(product));
-	const handleToggle = () => setShow(!show);
+
+	const handleToggle = useCallback(() => {
+		setShow(!show);
+	}, [show]);
 
 	return (
 		<Box
@@ -40,6 +43,7 @@ const ProductCard = ({ product, setCart }) => {
 				</Collapse>
 				{product.description.length > 130 && (
 					<Button
+						backgroundColor="white"
 						justifyContent="flex-end"
 						fontWeight={400}
 						color="gray.500"
