@@ -53,7 +53,7 @@ const ProductCard = ({ product, setCart }) => {
 							mt="8px"
 						>
 							Show {show ? "Less" : "More"}
-						</Button>{" "}
+						</Button>
 					</>
 				) : (
 					<Text fontSize="sm">{product.description}</Text>
