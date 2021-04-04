@@ -2,8 +2,8 @@ import axios from "axios";
 import Papa from "papaparse";
 
 export default {
-	list: async () => {
-		return axios
+	list: async () =>
+		axios
 			.get(
 				"https://docs.google.com/spreadsheets/d/e/2PACX-1vQwdmDBtDZzhJ6r0gF307ZpTNWsAb6PDwUn5GGwwynVxsV82HQDL09MiZgvNWjzf9fkvKbYLgmCyO91/pub?output=csv",
 				{
@@ -25,6 +25,5 @@ export default {
 							error: err => reject(err.message),
 						});
 					})
-			);
-	},
+			),
 };

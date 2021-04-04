@@ -57,9 +57,8 @@ const ProductsGrid = ({ products, setCart }) => {
 					_placeholder={{ color: "gray.400" }}
 				/>
 				<Select
-					placeholder="Select Category"
+					placeholder="Categories"
 					backgroundColor="white"
-					_placeholder={{ color: "gray.400" }}
 					maxW="200px"
 					marginLeft={4}
 					onChange={() => handleSelectCategory()}
@@ -85,7 +84,7 @@ const ProductsGrid = ({ products, setCart }) => {
 							<Heading as="h4" size="md" value={category} marginRight={2}>
 								{category}
 							</Heading>
-							<Heading size="md" as="h4" color="gray.600" fontWeight="400">
+							<Heading size="md" as="h4" color="gray.500" fontWeight="400">
 								(
 								{filteredProducts.filter(product => product.category === category).length}
 								)

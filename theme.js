@@ -4,9 +4,9 @@ export default extendTheme({
 	colors: {
 		primary: theme.colors["purple"],
 	},
-	styles: {
-		body: {
-			// backgroundColor: "primary.50",
-		},
+	fonts: {
+		body: "system-ui, sans-serif",
+		heading: "Georgia, serif",
+		mono: "Menlo, monospace",
 	},
 });
