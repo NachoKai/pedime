@@ -13,6 +13,7 @@ const Home = ({ products }) => {
 			<Head>
 				<title>Pedi.me</title>
 				<link rel="icon" href="/favicon.ico" />
+				<link rel="stylesheet" href="../styles/globals.css"></link>
 				<meta name="description" content="Store with whatsapp checkout."></meta>
 			</Head>
 
