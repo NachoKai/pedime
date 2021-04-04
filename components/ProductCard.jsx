@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { parseCurrency } from "../utils/parseCurrency";
-import { Box, Text, Image, Button, Badge } from "@chakra-ui/react";
+import { Box, Text, Image, Button, Badge, Collapse } from "@chakra-ui/react";
 
 const ProductCard = ({ product, setCart }) => {
+	const [show, setShow] = useState(false);
 	const addToCart = product => setCart(cart => cart.concat(product));
+	const handleToggle = () => setShow(!show);
 
 	return (
 		<Box
@@ -14,7 +17,7 @@ const ProductCard = ({ product, setCart }) => {
 			p={5}
 			bg="white"
 			color="black"
-			_hover={{ boxShadow: "md" }}
+			_hover={{ boxShadow: "lg" }}
 		>
 			<Box d="flex" flexDirection="column" height="100%">
 				<Image
@@ -31,9 +34,22 @@ const ProductCard = ({ product, setCart }) => {
 				<Badge maxWidth="fit-content" colorScheme="primary" variant="subtle" marginY={1}>
 					{product.category}
 				</Badge>
-				<Text fontSize="sm" noOfLines={3} marginY={2}>
-					{product.description}
-				</Text>
+
+				<Collapse marginY={2} startingHeight={60} in={show}>
+					<Text fontSize="sm">{product.description}</Text>
+				</Collapse>
+				{product.description.length > 130 && (
+					<Button
+						justifyContent="flex-end"
+						fontWeight={400}
+						color="gray.500"
+						size="sm"
+						onClick={handleToggle}
+						mt="8px"
+					>
+						Show {show ? "Less" : "More"}
+					</Button>
+				)}
 			</Box>
 
 			<Box d="flex" flexDirection="column">
