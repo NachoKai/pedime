@@ -85,7 +85,7 @@ const ProductsGrid = ({ products, setCart }) => {
 							<Heading as="h4" size="md" value={category} marginRight={2}>
 								{category}
 							</Heading>
-							<Heading size="md" as="h4" color="gray.500" fontWeight="400">
+							<Heading size="md" as="h4" color="gray.600" fontWeight="400">
 								(
 								{filteredProducts.filter(product => product.category === category).length}
 								)
@@ -111,6 +111,9 @@ const ProductsGrid = ({ products, setCart }) => {
 								>
 									<Box d="flex" flexDirection="column" height="100%">
 										<Image
+											w="100%"
+											h="auto"
+											alt={product.title}
 											loading="lazy"
 											borderRadius="lg"
 											src={product.image}
