@@ -22,9 +22,7 @@ const CartList = ({ cart, setCart }) => {
 	const uniqueProducts = [...new Set(cart)];
 
 	const removeProduct = (cart, product) => {
-		const valueId = cart.findIndex(
-			({ id, title }) => id === product.id && title === product.title
-		);
+		const valueId = cart.findIndex(({ id }) => id === product.id);
 		const newArray = [...cart.slice(0, valueId), ...cart.slice(valueId + 1)];
 		return setCart([...newArray]);
 	};
